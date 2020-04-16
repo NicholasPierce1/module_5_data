@@ -1,6 +1,6 @@
-var Author = require('../models/author')
-var async = require('async')
-var Book = require('../models/book')
+const Author = require('../models/author')
+const async = require('async')
+const Book = require('../models/book')
 
 const { body, validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
@@ -33,7 +33,7 @@ exports.author_detail = function (req, res, next) {
     }, function (err, results) {
         if (err) { return next(err); } // Error in API usage.
         if (results.author == null) { // No results.
-            var err = new Error('Author not found');
+            const err = new Error('Author not found');
             err.status = 404;
             return next(err);
         }
@@ -72,7 +72,7 @@ exports.author_create_post = [
         const errors = validationResult(req);
         
         // Create Author object with escaped and trimmed data
-        var author = new Author(
+        const author = new Author(
             {
                 first_name: req.body.first_name,
                 family_name: req.body.family_name,
@@ -159,7 +159,7 @@ exports.author_update_get = function (req, res, next) {
     Author.findById(req.params.id, function (err, author) {
         if (err) { return next(err); }
         if (author == null) { // No results.
-            var err = new Error('Author not found');
+            const err = new Error('Author not found');
             err.status = 404;
             return next(err);
         }
@@ -193,7 +193,7 @@ exports.author_update_post = [
         const errors = validationResult(req);
 
         // Create Author object with escaped and trimmed data (and the old id!)
-        var author = new Author(
+        const author = new Author(
             {
                 first_name: req.body.first_name,
                 family_name: req.body.family_name,
