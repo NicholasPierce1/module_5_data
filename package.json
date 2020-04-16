@@ -7,13 +7,19 @@
     "devstart": "nodemon ./bin/www"
   },
   "dependencies": {
-    "cookie-parser": "~1.4.4",
+    "async": "^2.6.2",
+    "compression": "^1.7.3",
+    "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
+    "express": "~4.16.0",
+    "express-validator": "^5.3.1",
+    "helmet": "^3.22.0",
+    "http-errors": "~1.6.2",
+    "moment": "^2.24.0",
+    "mongoose": "^5.4.13",
+    "morgan": "^1.9.1",
     "jade": "~1.11.0",
-    "mongoose": "^5.9.7",
-    "morgan": "~1.9.1"
+    "dotenv": "^8.2.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.10"

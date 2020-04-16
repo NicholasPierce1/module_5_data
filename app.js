@@ -3,9 +3,11 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+require('dotenv').config({path: ".env"});
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const catalogRouter = require('./routes/catalog');
 
 const app = express();
 
@@ -15,9 +17,7 @@ app.set('view engine', 'jade');
 
 
 const mongodb = require("mongoose");
-// second nick is pwd
-const db_connect = "mongodb+srv://nick:nick@cluster0-f6vlf.mongodb.net/library?retryWrites=true&w=majority";
-mongodb.connect(db_connect, {useNewUrlParser: true, useUnifiedTopology: true});
+mongodb.connect(process.env.ATLAS_URI, {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongodb.connection;
 db.on("error", console.error.bind(console, 'could not connect to mongo'));
 
@@ -30,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/catalog', catalogRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
