@@ -154,7 +154,7 @@ exports.author_delete_post = function (req, res, next) {
 };
 
 // Display Author update form on GET.
-exports.author_update_get = function (req, res, next) {
+exports.author_update_get = function (req, res, next) { 
 
     Author.findById(req.params.id, function (err, author) {
         if (err) { return next(err); }
